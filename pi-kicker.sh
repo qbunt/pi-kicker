@@ -4,6 +4,7 @@ GW=$(/sbin/ip route | awk '/default/ { print $3 }')
 checkdns=$(cat /etc/resolv.conf | awk '/nameserver/ {print $2}' | awk 'NR == 1 {print; exit}')
 checkdomain=google.com
 
+
 function portscan() {
 	tput setaf 6
 	echo "Starting port scan of $checkdomain port 80"
