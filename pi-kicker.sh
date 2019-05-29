@@ -1,6 +1,6 @@
 #!/bin/bash
 # from https://unix.stackexchange.com/questions/190513/shell-scripting-proper-way-to-check-for-internet-connectivity
-GW=$(/sbin/ip route | awk '/default/ { print $3 }')
+GW=$(/sbin/ip route |grep '^default' | awk '/wlan0/ {print $3}')
 checkdns=$(cat /etc/resolv.conf | awk '/nameserver/ {print $2}' | awk 'NR == 1 {print; exit}')
 checkdomain=google.com
 
